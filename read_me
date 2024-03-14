@@ -1,0 +1,39 @@
+This program receives bacteria names and and mass spectrometry raw files.
+It creates a proteome of proteins that were found in the samples.
+It downloads fasta files of the organisms from Uniprot website.
+The program uses fragpipe and it should be downloaded on the computer.
+
+directory folder contains:
+    resources folder:
+        fragpipe_files->(fragger.params, fragpipe.workflow, fragpipe-files.fp-manifest)
+        fasta->combined_proteome (if the user wants to expand an existing proteome fasta file)
+    first_step folder:
+        should contain raw files samples for analysing using ms fragger and Human_Top_100.fasta.
+
+fragpipe_directory: directory in which fragpipe was downloaded
+format: "fragpipe_directory"
+
+directory: directory containing the folders "first_step" and "recourses"
+format: "directory"
+
+adding_to_existing_fasta: value that represents if there is already an existing fasta file that you wish to expand.
+format: "true"/"false"
+
+raw_file_list: list of names of raw files you want to run.
+format: 'raw1','raw2','raw3'...
+
+organisms_list: list of organisms that you wish to add/build the proteome according to their proteins.
+format: 'Actinomyces+naeslundii','Actinomyces+oris','Corynebacterium+amycolatum'...
+
+number_of_fastas_to_download: number of fastas that will be downloaded from each organism for checking fasta files
+validity from uniprot
+format: 20
+
+the input should be in the format:
+fragpipe_directory directory adding_to_existing_fasta raw_file_list organisms_list number_of_fastas_to_download
+
+input example:
+python ../main.py
+"C:\Users\owner\Microbiome\MS_Fragger\fragpipe" "C:\Users\owner\Microbiome\Building_a_Unified_Proteome" "false"
+"2022_05_25_09_PreNatal3_Sample1_S1_SCX_p2","2022_05_25_07_PreNatal3_Sample2_S1_SCX_p2"
+'Actinomyces+naeslundii','Actinomyces+oris','Corynebacterium+amycolatum','Corynebacterium+striatum' 20
